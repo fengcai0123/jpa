@@ -23,12 +23,11 @@ public class GoodServiceImpl implements GoodService {
     //根据asin查找是否已经存在
     public String findGoodIdByAsin(String asin) {
         Good good=goodRepository.findAsin(asin);
-        System.out.println("查询到的goodId="+good.getGoodId());
         if(good!=null){
             System.out.println("查询到的goodId 不为空=="+good.getGoodId());
             return String.valueOf(good.getGoodId());
         }else {
-            System.out.println("查询到的goodId 不存在"+good.getGoodId());
+            System.out.println("查询到的goodId 不存在");
             return "0";
         }
     }
@@ -56,5 +55,11 @@ public class GoodServiceImpl implements GoodService {
     public Good findGoodByAsin(int  goodId) {
         Good good=goodRepository.findOne(goodId);
         return null;
+    }
+
+    @Override
+    public List<String> findAsinByAsinStatus(int asinStatus) {
+        List<String> asinList=goodRepository.selectAsinByAsinStatus(asinStatus);
+        return asinList;
     }
 }

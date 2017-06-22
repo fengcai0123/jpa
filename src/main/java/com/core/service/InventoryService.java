@@ -13,6 +13,9 @@ public interface InventoryService {
 
     public Inventory insert(Inventory inventory);
 
+    /*删除商品库存*/
+    public void del(int  goodId);
+
     /*根据goodId查所有库存信息*/
     public List<Inventory> findInventoryByGoodId(int goodId);
 

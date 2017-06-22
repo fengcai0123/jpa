@@ -14,6 +14,9 @@ public interface PriceService {
     /*添加商品价格*/
     public Price insert(Price price);
 
+    /*删除商品价格*/
+    public void del(int  goodId);
+
     /*根据goodId查所有价格信息*/
     public List<Price> findPriceByGoodId(int goodId);
 

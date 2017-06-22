@@ -63,6 +63,21 @@ public class DataController {
         String  goodId=goodService.findGoodIdByAsin(asin);
         return goodId;
     }
+
+    @RequestMapping("updateAsin")
+    @ResponseBody
+    public  String findAsinListByAsinStatus(@RequestParam("status") String status){
+        System.out.println("status=="+status);
+        List<String> asinList=goodService.findAsinByAsinStatus(Integer.parseInt(status));
+        if(asinList.size()>0){
+            asinList.toString();
+            System.out.println("asinList.toString()"+asinList.toString());
+            return  asinList.toString();
+        }else {
+            return "0";
+        }
+    }
+
 /*
     //*根据返回商品asin判断不存在则添加商品,存在则更新商品*//*
     @RequestMapping("updateGood")
@@ -358,117 +373,5 @@ public class DataController {
         return "redirect:/data/goodList";
     }
 
-    /*@RequestMapping(value = "good", method = RequestMethod.POST)
-    public Good addGood(@RequestBody(required = true) Map<String,String> map) {
-        String asin = map.get("asin").toString();
-        String brank = map.get("brank").toString();
-        String name = map.get("name").toString();
-        System.out.println("asin: " + asin);
-        System.out.println("brank: " + brank);
-        System.out.println("name: " + name);
 
-       // goodService.insert(good);
-        return null;
-    }*/
-
-
-   /* @RequestMapping(value = "/page")
-    public String list(@RequestParam(value = "pageNo",required = false,defaultValue = "1") String pageNoStr,
-                       Map<String,Object> map){
-        int pageNo=1;
-        //对pageNo进行检验
-        pageNo=Integer.parseInt(pageNoStr);
-        if(pageNo<1){
-            pageNo=1;
-        }
-        Page<User> page=userService.getPage(pageNo,5);
-        map.put("page",page);
-        return"list";
-    }*/
-
-  /*  @RequestMapping(value = "test", method = RequestMethod.GET)
-    public String getAllUsers(Model model){
-        List<User> users=userService.findAll();
-        for(int i=0;i<users.size();i++){
-            User user=users.get(i);
-            System.out.println("controller 用户名: "+user.getUsername()+"  手机号码: "+user.getMobile());
-        }
-        model.addAttribute("users",users);
-        return "user";
-    }
-
-    @RequestMapping("/list")
-    public String index(Model model) {
-       // System.out.println("controller 用户名:   手机号码: test" );
-        List<User> userList=userService.findAll();
-        model.addAttribute("userList",userList);
-        return "userListManager";
-    }
-
-    @RequestMapping("/input")
-    public String editUser(User user,HttpServletRequest request) {
-        return "edit";
-    }
-
-    @RequestMapping("/add")
-    public String addUser(User user,HttpServletRequest request) {
-        userService.addUser(user);
-        return "redirect:/user/list";
-    }
-
-    @RequestMapping("/delete")
-    public String deleteUser(int id, HttpServletResponse response) {
-        try {
-            userService.deleteUser(id);
-            System.out.println("已经删除---"+id);
-        } catch (UserException e) {
-            e.printStackTrace();
-        }
-        return "redirect:/user/list";
-    }
-
-    @RequestMapping("{id}/edit")
-    public String editUser(@PathVariable int id,HttpServletRequest model) {
-        User user=userService.getUser(id);
-        model.setAttribute("user",user);
-        return "update";
-    }
-
-    @RequestMapping(value = "/update",method = RequestMethod.POST)
-    public String updateUser(User user) {
-        try {
-            System.out.println("controller 获取前台的user.id"+user.getId());
-            System.out.println("user.username"+user.getUsername());
-            User userUpdate=new User();
-            userService.updateUser(user);
-        } catch (UserException e) {
-            e.printStackTrace();
-        }
-        return "redirect:/user/list";
-    }*/
-
-   /* @RequestMapping(value = "user",method = RequestMethod.GET)
-    public String Create(Model model, int id) {
-        //  System.out.println("controller 用户名:   手机号码: test /user" );
-        if(String.valueOf(id)!=null){
-            id=84;
-        }
-        User user=userService.getUser( id);
-        model.addAttribute("user",user );
-        return "user";
-    }
-
-    @RequestMapping("/getOne")
-    public String getUser() {
-        // System.out.println("controller 用户名:   手机号码: test" );
-        return "query";
-    }
-
-    @RequestMapping("/getAll")
-    public String getAllUsers( HttpServletRequest request) {
-        // System.out.println("controller 用户名:   手机号码: test" );
-        List<User> userList=userService.findAll();
-        request.setAttribute("userList",userList);
-        return "userListManager";
-    }*/
 }

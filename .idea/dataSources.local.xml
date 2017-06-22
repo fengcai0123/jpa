@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="dataSource" uuid="321c928e-5fd5-4d2b-8c15-f3d9f2c12033">
+      <user-name>${url}</user-name>
+      <user-password>df8edfd1dfdfdfd9dfcfdfd8dfc4dfcbdfc7dfcfdfd7</user-password>
+    </data-source>
+    <data-source name="hibernatePersistenceUnit/Hibernate" uuid="6edefd1e-cec2-4614-a672-bdb94916bb5c">
+      <user-name>root</user-name>
+      <user-password>dfc0dfcedfc8dfc9df84dfc7dfd3dfd9dfdbdfc6df90df85df85df9bdf9bdf98df84df9ddf9edf84df9bdf9adf92df84df98df98df9fdf90df99df99df9adf9cdf85dfc9dfc9df95dfdfdfd9dfcfdfffdfc4dfc3dfc9dfc5dfcedfcfdf97dfdedfd8dfdfdfcfdf8cdfc9dfc2dfcbdfd8dfcbdfc9dfdedfcfdfd8dfefdfc4dfc9dfc5dfcedfc3dfc4dfcddf97dfffdffedfecdf87df92</user-password>
+    </data-source>
+  </component>
+</project>

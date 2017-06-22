@@ -22,6 +22,7 @@
                 <th>序号</th>
                 <th>日期</th>
                 <th>BSR排名</th>
+                <th>操作</th>
             </thead>
             <tbody>
             <c:forEach items="${bsrList}" var="item" varStatus="status">
@@ -29,6 +30,7 @@
                     <td>${status.index+1}</td>
                     <td>${item.date}</td>
                     <td>${item.bsrNum}</td>
+                    <td><a href="${pageContext.request.contextPath}/bsr/del?asin=${asin}">删除</a></td>
                 </tr>
             </c:forEach>
             </tbody>

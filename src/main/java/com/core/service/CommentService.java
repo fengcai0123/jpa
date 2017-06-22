@@ -14,6 +14,9 @@ public interface CommentService {
     /*添加商品评分*/
     public Comment insert(Comment comment);
 
+    /*删除商品评分*/
+    public void del(int  goodId);
+
     /*根据goodId查所有对应评分信息*/
     public List<Comment> findCommentByGoodId(int goodId);
 

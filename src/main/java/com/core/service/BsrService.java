@@ -13,6 +13,9 @@ public interface BsrService {
     /*添加商品BSR排名*/
     public Bsr insert(Bsr bsr);
 
+    /*删除商品BSR排名*/
+    public void del(String asin);
+
     /*根据goodId查所有库存信息*/
     public List<Bsr> findBsrByGoodId(int goodId);
 

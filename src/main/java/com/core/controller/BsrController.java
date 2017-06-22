@@ -1,6 +1,7 @@
 package com.core.controller;
 
 import com.core.entity.Bsr;
+import com.core.entity.Good;
 import com.core.entity.Inventory;
 import com.core.service.BsrService;
 import com.core.service.GoodService;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,6 +27,28 @@ public class BsrController {
 
     @Autowired
     private GoodService goodService;
+
+
+
+    @RequestMapping("add")
+    public String add(){
+        Bsr bsr=new Bsr();
+        Good good=new Good();
+        good.setColor("red");
+        Date time= new java.sql.Date(new java.util.Date().getTime());
+        bsr.setDate(time);
+        bsr.setBsrNum(5);
+        bsr.setGood(good);
+        goodService.insert(good);
+        bsrService.insert(bsr);
+        return "redircet:/bsr/list";
+    }
+
+    @RequestMapping("del")
+    public String del(@RequestParam String  asin){
+        bsrService.del(asin);
+        return "redircet:/bsr/list";
+    }
 
     @RequestMapping("allList")
     public String findAllBsr(Model model){
@@ -41,6 +65,7 @@ public class BsrController {
             System.out.println("inventoryController 取得返回的goodId=="+goodId);
             List<Bsr> bsrList = bsrService.findBsrByGoodId(goodId);
             model.addAttribute("bsrList",bsrList);
+            model.addAttribute("asin",asin);
         }else {
             System.out.println("找不到该商品库存信息!");
         }

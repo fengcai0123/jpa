@@ -13,6 +13,9 @@ public interface SellService  {
     /*添加商品销量*/
     public Sell insert(Sell sell);
 
+    /*删除商品销量*/
+    public void del(int  goodId);
+
     /*根据goodId查所有销量信息*/
     public List<Sell> findSellByGoodId(int goodId);
 
