@@ -24,6 +24,11 @@ public class PriceServiceImpl implements PriceService {
     }
 
     @Override
+    public void del(int goodId) {
+
+    }
+
+    @Override
     public List<Price> findPriceByGoodId(int goodId) {
         List<Price> priceList=priceRepository.selectAllByGoodId(goodId);
         return priceList;

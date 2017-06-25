@@ -12,15 +12,15 @@ import java.util.List;
  */
 @Component
 public class UpdateAsinStatus {
-    @Autowired
+    /*@Autowired
     private GoodService goodService;
     @Scheduled(cron = "0/30 * * * * ?")
     public void test(){
         System.out.println("定时任务开始啦，哈哈哈,把原来状态AsinStatus=1的改为AsinStatus=2");
         List<String> asinList=goodService.findAsinByAsinStatus(1);
         if(asinList.size()>0){
-            goodService.update();
+
         }
         System.out.println("<<<---------结束执行HR数据同步任务--------->>>");
-    }
+    }*/
 }

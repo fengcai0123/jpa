@@ -1,6 +1,12 @@
 package com.core.entity;
 
+import org.hibernate.annotations.*;
+
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -8,6 +14,7 @@ import java.util.Set;
 /**
  * Created by yonghuo.chen on 17/6/16.
  */
+@NamedQuery(name = "Good.findByAsin",query = "select g from Good g where g.asin=?1")
 @Table(name = "good")
 @Entity
 public class Good {

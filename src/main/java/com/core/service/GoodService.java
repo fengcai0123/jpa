@@ -14,11 +14,12 @@ public interface GoodService {
 
     public void  update(Good good);
 
+
     public  String findGoodIdByAsin(String asin);
 
     /*根据asinStatus查找asin*/
     public List<String> findAsinByAsinStatus(int asinStatus);
 
-    public Good findGoodByAsin(int  goodId);
+    public Good findGoodByAsin(String   asin);
     public List<Good> getAll();
 }

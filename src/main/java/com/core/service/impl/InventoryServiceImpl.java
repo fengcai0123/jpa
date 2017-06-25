@@ -13,7 +13,10 @@ import java.util.List;
  */
 @Service
 public class InventoryServiceImpl implements InventoryService {
+    @Override
+    public void del(int goodId) {
 
+    }
 
     @Autowired
     private InventoryRepository inventoryRepository;

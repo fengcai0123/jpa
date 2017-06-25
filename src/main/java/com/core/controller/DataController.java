@@ -132,6 +132,8 @@ public class DataController {
 
         System.out.println("map.get(\"asin\"): " + String.valueOf(map.get("asin")));
 
+        /*设置asinStatus状态为1,表示该商品刚刚添加*/
+        good.setAsinStatus(1);
 
         goodService.insert(good);
 
@@ -373,5 +375,49 @@ public class DataController {
         return "redirect:/data/goodList";
     }
 
+    @RequestMapping("competitor")
+    public String competitor(Model model){
+        List<Good>goodList=goodService.getAll();
+        model.addAttribute("goodList",goodList);
+        return "competitor";
+    }
 
+    @RequestMapping("competitorList")
+    public String competitorList(Model model){
+        List<Good>goodList=goodService.getAll();
+        model.addAttribute("goodList",goodList);
+        return "competitorList";
+    }
+
+    @RequestMapping("competitorDetail")
+    public String competitorDetail(@RequestParam String asin,Model model){
+        Good good =goodService.findGoodByAsin(asin);
+        model.addAttribute("good",good);
+
+        List<Price> priceList=priceservice.findPriceByGoodId(good.getGoodId());
+        Price price =priceList.get(priceList.size()-1);
+        model.addAttribute("priceList",priceList);
+        model.addAttribute("price",price);
+
+        List<Sell> sellList=sellService.findSellByGoodId(good.getGoodId());
+        Sell sell =sellList.get(sellList.size()-1);
+        model.addAttribute("sellList",sellList);
+        model.addAttribute("sell",sell);
+
+        List<Bsr> bsrList=bsrservice.findBsrByGoodId(good.getGoodId());
+        Bsr bsr =bsrList.get(bsrList.size()-1);
+        model.addAttribute("bsrList",bsrList);
+        model.addAttribute("bsr",bsr);
+
+        List<Comment> commentList=commentservice.findCommentByGoodId(good.getGoodId());
+        Comment comment =commentList.get(commentList.size()-1);
+        model.addAttribute("commentList",commentList);
+        model.addAttribute("comment",comment);
+
+        List<Inventory> inventoryList=inventoryService.findInventoryByGoodId(good.getGoodId());
+        Inventory inventory =inventoryList.get(inventoryList.size()-1);
+        model.addAttribute("inventoryList",inventoryList);
+        model.addAttribute("inventory",inventory);
+        return "competitorDetail";
+    }
 }

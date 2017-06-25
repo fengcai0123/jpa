@@ -23,6 +23,11 @@ public class SellServiceImpl implements SellService{
     }
 
     @Override
+    public void del(int goodId) {
+
+    }
+
+    @Override
     public List<Sell> findSellByGoodId(int goodId) {
         List<Sell> sellList=sellRepository.selectAllByGoodId(goodId);
         return sellList;

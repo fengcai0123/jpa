@@ -1,6 +1,7 @@
 package com.core.repository;
 
 import com.core.entity.Good;
+import org.hibernate.annotations.NamedQuery;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -27,9 +28,12 @@ public interface GoodRepository extends JpaRepository<Good,Integer> {
     /*根据asinStatus更新*/
     @Modifying
     @Query("update Good g set " +
-        "g.asinStatus=:newStatus  where g.goodId=:goodId")
-    int  updateAsinStatusByAsin( @Param("newStatus")int newStatus,@Param("goodId")int goodId);
+        "g.asinStatus=:newStatus  where g.asinStatus=:oldAsinStatus")
+    int  updateAsinStatusByAsinStatus( @Param("newStatus")int newStatus,@Param("oldAsinStatus")int oldStatus);
 
    /* @Query("select g from Good g JOIN g.priceSet p  where p.goodId=:goodId")
     public Good findGood(int  goodId);*/
+
+    @Query("select g from Good g where g.asin=?1")
+    public Good findByAsin( String asin);
 }

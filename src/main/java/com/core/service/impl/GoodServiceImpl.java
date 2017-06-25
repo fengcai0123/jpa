@@ -52,9 +52,9 @@ public class GoodServiceImpl implements GoodService {
     }
 
     @Override
-    public Good findGoodByAsin(int  goodId) {
-        Good good=goodRepository.findOne(goodId);
-        return null;
+    public Good findGoodByAsin(String   asin) {
+        Good good=goodRepository.findByAsin(asin);
+        return good;
     }
 
     @Override

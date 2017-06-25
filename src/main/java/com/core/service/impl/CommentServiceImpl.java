@@ -21,6 +21,11 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    public void del(int goodId) {
+
+    }
+
+    @Override
     public List<Comment> findCommentByGoodId(int goodId) {
         List<Comment> commentList=commentRepository.selectAllByGoodId(goodId);
         return commentList;
